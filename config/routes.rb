@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root 'sudoku#home'
 
+  post '/solve' => 'sudoku#solve'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
