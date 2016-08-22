@@ -6,14 +6,14 @@ function($scope, sudokuService) {
 
 	function solve(unsolvedPuzzle) {
 		sudokuService.solveSudoku(unsolvedPuzzle).then(function(solvedPuzzle){
-			$scope.solved = solvedPuzzle	
-	}
+			$scope.solved = solvedPuzzle.toString()	
+		});
+	};
 
 	$scope.solveMe = function(unsolvedPuzzle) {
 		solve(unsolvedPuzzle);
 	};
 
-
-solve('.94...13..............76..2.8..1.....32.........2...6.....5.4.......8..7..63.4..8');
+	solve('.94...13..............76..2.8..1.....32.........2...6.....5.4.......8..7..63.4..8');
 }
 ]);

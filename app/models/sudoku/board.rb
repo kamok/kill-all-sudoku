@@ -1,4 +1,4 @@
-class Sudoku::Board
+class Board
   attr_reader :cells, :rows, :columns, :blocks
 
   ROW_ID = ["A","B","C","D","E","F","G","H","I"]

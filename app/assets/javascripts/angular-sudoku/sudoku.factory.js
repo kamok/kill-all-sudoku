@@ -7,12 +7,12 @@ function ($http, $q) {
 		var deferred = $q.defer();
 		var queryString = {}
 		queryString["sudoku_string"] = unsolvedPuzzle;
-		$http.post('/sudoku', queryString)
+		$http.post('/solve', queryString)
 			.success(function(data){
 				deferred.resolve(data);
-			});
+			})
 			.error(function(err){
-				console.log(err);
+				console.log("Error retrieving data from Rails");
 				deferred.reject(err);
 			});
 		return deferred.promise;
@@ -21,6 +21,6 @@ function ($http, $q) {
 	return {
 		solveSudoku: solveSudoku
 	};
-	
+
 }
 ]);
