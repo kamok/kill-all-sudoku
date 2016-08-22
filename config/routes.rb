@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'sudoku#home'
 
-  post '/solve' => 'sudoku#solve'
+  post '/solve' => 'sudoku#solve_puzzle'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
