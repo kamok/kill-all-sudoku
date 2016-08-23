@@ -1,6 +1,6 @@
 class Row
   attr_reader :cells, :id
-  # attr_accessor :row_values
+
   def initialize(row_id, all_cells)
     @cells = []
     all_cells.map do |cell|

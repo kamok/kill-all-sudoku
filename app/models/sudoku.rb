@@ -1,5 +1,6 @@
 class Sudoku < ActiveRecord::Base
   attr_reader :board
+  
   def initialize(data)
     data = parse_import(data)
     @board = Board.new(data)

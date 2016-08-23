@@ -1,5 +1,6 @@
 class Block
   attr_reader :cells, :id
+  
   def initialize(block_id, all_cells)
     @cells = []
     all_cells.map do |cell|
