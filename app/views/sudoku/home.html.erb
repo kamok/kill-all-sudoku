@@ -1,26 +1,32 @@
-<h1>home</h1>
+<h1>Kill all Sudoku</h1>
+
+<img src="bender.jpg" style="height: 20% ; width: 20% ;">
 
 <h2>puzzles to try</h2>
 1.58.2....9..764.52..4..819.19..73.6762.83.9.....61.5...76...3.43..2.5.16..3.89.. </br>
 39.82.7..8.15...69.2.16.4.3..2.96.58935...6.2.6.752.3.7.3941...2...3759..19...347 </br>
 
 <div ng-app="sudokuApp">
-	<div ng-controller="sudokuCtrl">
+	<div ng-controller="sudokuCtrl" ng-init="solved = [['','','','','','','','',''],['','','','','','','','',''],['','','','','','','','',''],['','','','','','','','',''],['','','','','','','','',''],['','','','','','','','',''],['','','','','','','','',''],['','','','','','','','',''],['','','','','','','','','']]">
+
 		<form ng-submit="solveMe(unsolvedPuzzle)">
 			 <input type="text" ng-model="unsolvedPuzzle">
 		</form>
-		{{ solved }}
 
 		<table>
-			<tr ng-repeat="row in solved">
-				<td ng-repeat ="cell in row">
+			<tr ng-repeat="row in solved track by $index">
+				<td ng-repeat ="cell in row track by $index">
 					<form>
-						<input type="text" ng-model="cell" >
+						<input type="text" ng-model="cell" limit-to="1">
 					</form>
 				</td>
 			</tr>
 		</table>
-		
+
+		<!-- <button ng-click="solveMe(solved)">
+			KILL!	
+		</button> -->
+
 	</div>
 </div>
 
@@ -29,9 +35,15 @@ table tr input{
     text-align: center;
     width: 100%;
     height: 100%;
-    background: none;
+    background: #e6ffcc;
     border: none;
     width: 40px;
     height: 40px;
+}
+
+table tr td{
+    border: 1px solid #000;
+    cursor: pointer;
+
 }
 </style>
