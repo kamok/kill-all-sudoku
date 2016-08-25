@@ -47,7 +47,6 @@ function($scope, sudokuService) {
 	$scope.defaultPuzzle = function() {
 		$scope.solved = [[{"value":null},{"value":8},{"value":6},{"value":null},{"value":2},{"value":null},{"value":null},{"value":null},{"value":null}],[{"value":null},{"value":null},{"value":null},{"value":7},{"value":null},{"value":null},{"value":null},{"value":5},{"value":9}],[{"value":null},{"value":null},{"value":null},{"value":null},{"value":null},{"value":null},{"value":null},{"value":null},{"value":null}],[{"value":null},{"value":null},{"value":null},{"value":null},{"value":6},{"value":null},{"value":8},{"value":null},{"value":null}],[{"value":null},{"value":4},{"value":null},{"value":null},{"value":null},{"value":null},{"value":null},{"value":null},{"value":null}],[{"value":null},{"value":null},{"value":5},{"value":3},{"value":null},{"value":null},{"value":null},{"value":null},{"value":7}],[{"value":null},{"value":null},{"value":null},{"value":null},{"value":null},{"value":null},{"value":null},{"value":null},{"value":null}],[{"value":null},{"value":2},{"value":null},{"value":null},{"value":null},{"value":null},{"value":6},{"value":null},{"value":null}],[{"value":null},{"value":null},{"value":7},{"value":5},{"value":null},{"value":9},{"value":null},{"value":null},{"value":null}]];
 	}
-
-	// solve('.94...13..............76..2.8..1.....32.........2...6.....5.4.......8..7..63.4..8');
+	
 }
 ]);

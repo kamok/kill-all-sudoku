@@ -32,15 +32,9 @@ function ($http, $q) {
 ]);
 
 function parseSudoku(array) {
-	var flattened = _.flatten(array);
-	var pluck_value = _.pluck(flattened, "value")
-	var mapped = _.map(pluck_value, function(value) { 
-		if (value == null){
-			return value = '.'
-		}
-		else {
-			return value
-		}
+	var mapped = _.map((_.pluck((_.flatten(array)), "value")), function(value) { 
+		if (value == null) { return value = '.'}
+		else { return value }
 	});
 	return mapped.join("")
 };
