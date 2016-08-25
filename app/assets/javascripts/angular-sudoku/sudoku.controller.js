@@ -13,14 +13,14 @@ function($scope, sudokuService) {
 			  output.push({value: +sNumber.charAt(i)});
 			}
 
-			var nestedArray = []
+			var nestedArray = [];
 
 			for (var i = 0; i < 9 ; i += 1) {
-				var a = output.splice(0,9)
+				var a = output.splice(0,9);
 				nestedArray.push(a);
 			}
 
-			$scope.solved = nestedArray
+			$scope.solved = nestedArray;
 		});
 	};
 
@@ -29,17 +29,13 @@ function($scope, sudokuService) {
 	};
 
 	$scope.clearBoard = function() {
-		var blank = { value: null }
-		$scope.solved = [
-		[blank,blank,blank,blank,blank,blank,blank,blank,blank],
-		[blank,blank,blank,blank,blank,blank,blank,blank,blank],
-		[blank,blank,blank,blank,blank,blank,blank,blank,blank],
-		[blank,blank,blank,blank,blank,blank,blank,blank,blank],
-		[blank,blank,blank,blank,blank,blank,blank,blank,blank],
-		[blank,blank,blank,blank,blank,blank,blank,blank,blank],
-		[blank,blank,blank,blank,blank,blank,blank,blank,blank],
-		[blank,blank,blank,blank,blank,blank,blank,blank,blank],
-		[blank,blank,blank,blank,blank,blank,blank,blank,blank]]
+		var solved = [];
+
+		_(9).times(function(n) {  
+			solved.push([{ value: null },{ value: null },{ value: null },{ value: null },{ value: null },{ value: null },{ value: null },{ value: null },{ value: null }]) 
+		});
+
+		$scope.solved = solved;
 	};
 
 	// solve('.94...13..............76..2.8..1.....32.........2...6.....5.4.......8..7..63.4..8');

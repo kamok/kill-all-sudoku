@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require angular
+//= require underscore
 
 //= require angular-animate
 //= require angular-resource
