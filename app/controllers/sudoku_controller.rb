@@ -6,6 +6,7 @@ class SudokuController < ApplicationController
 
   def solve_puzzle
     sudoku = Sudoku.new(params[:sudoku_string])
+    puts params[:sudoku_string]
     render json: { solution: sudoku.solve }
   end
 end

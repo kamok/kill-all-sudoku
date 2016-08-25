@@ -14,13 +14,11 @@
 		</form>
 
 		<table>
-			<tr ng-repeat="row in solved track by $index" ng-init= "rowIndex = $index">
+			<tr ng-repeat="row in solved track by $index" ng-init= "rowIndex = $index" >
 				<td ng-repeat ="cell in row track by $index">
 					<form>
 						<input ng-model="solved[rowIndex][$index].value" limit-to="1" type="number"/>
 					</form>
-						{{rowIndex}}
-						{{$index}}
 				</td>
 			</tr>
 		</table>
@@ -35,6 +33,9 @@
 			Clear
 		</button>
 
+		<button ng-click="defaultPuzzle()">
+			default
+		</button>
 		<!-- <button ng-click="solveMe(solved)">
 			KILL!	
 		</button> -->

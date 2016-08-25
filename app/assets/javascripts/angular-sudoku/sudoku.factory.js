@@ -4,6 +4,12 @@ angular
 
 function ($http, $q) {
 	var solveSudoku = function(unsolvedPuzzle) {
+		if (typeof unsolvedPuzzle == "object") {
+			unsolvedPuzzle = parseSudoku(unsolvedPuzzle);
+		};
+
+		console.log(unsolvedPuzzle);
+
 		var deferred = $q.defer();
 		var queryString = {}
 		queryString["sudoku_string"] = unsolvedPuzzle;
@@ -24,3 +30,17 @@ function ($http, $q) {
 
 }
 ]);
+
+function parseSudoku(array) {
+	var flattened = _.flatten(array);
+	var pluck_value = _.pluck(flattened, "value")
+	var mapped = _.map(pluck_value, function(value) { 
+		if (value == null){
+			return value = '.'
+		}
+		else {
+			return value
+		}
+	});
+	return mapped.join("")
+};
