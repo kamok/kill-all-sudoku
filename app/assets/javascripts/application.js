@@ -15,6 +15,7 @@
 //= require turbolinks
 //= require angular
 //= require underscore
+//= require foundation
 
 //= require angular-animate
 //= require angular-resource
@@ -23,3 +24,4 @@
 
 //= require_self
 
+$(function(){ $(document).foundation(); });
