@@ -7,23 +7,29 @@
 39.82.7..8.15...69.2.16.4.3..2.96.58935...6.2.6.752.3.7.3941...2...3759..19...347 </br>
 
 <div ng-app="sudokuApp">
-	<div ng-controller="sudokuCtrl" ng-init="solved = [['','','','','','','','',''],['','','','','','','','',''],['','','','','','','','',''],['','','','','','','','',''],['','','','','','','','',''],['','','','','','','','',''],['','','','','','','','',''],['','','','','','','','',''],['','','','','','','','','']]">
+	<div ng-controller="sudokuCtrl" ng-init="clearBoard()">
 
 		<form ng-submit="solveMe(unsolvedPuzzle)">
-			 <input type="text" ng-model="unsolvedPuzzle">
+			<input type="text" ng-model="unsolvedPuzzle">
 		</form>
 
 		<table>
-			<tr ng-repeat="row in solved track by $index">
+			<tr ng-repeat="row in solved track by $index" ng-init= "rowIndex = $index">
 				<td ng-repeat ="cell in row track by $index">
 					<form>
-						<input type="text" ng-model="cell" limit-to="1">
+						<input ng-model="solved[rowIndex][$index].value" limit-to="1" type="number"/>
 					</form>
+						{{rowIndex}}
+						{{$index}}
 				</td>
 			</tr>
 		</table>
 
-		{{boy}}
+		{{solved}}
+
+		<button ng-click="solveMe(solved)">
+			Solve
+		</button>
 
 		<button ng-click="clearBoard()">
 			Clear
@@ -50,6 +56,12 @@ table tr input{
 table tr td{
     border: 1px solid #000;
     cursor: pointer;
+}
 
+/*get's rid of annoying spinner for input="number"*/
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
 </style>

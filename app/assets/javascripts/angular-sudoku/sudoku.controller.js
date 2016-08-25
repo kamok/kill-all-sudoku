@@ -10,7 +10,7 @@ function($scope, sudokuService) {
 			var sNumber = solvedPuzzle['solution'].toString();
 
 			for (var i = 0; i < sNumber.length; i += 1) {
-			  output.push(+sNumber.charAt(i));
+			  output.push({value: +sNumber.charAt(i)});
 			}
 
 			var nestedArray = []
@@ -29,8 +29,18 @@ function($scope, sudokuService) {
 	};
 
 	$scope.clearBoard = function() {
-		$scope.solved = [['','','','','','','','',''],['','','','','','','','',''],['','','','','','','','',''],['','','','','','','','',''],['','','','','','','','',''],['','','','','','','','',''],['','','','','','','','',''],['','','','','','','','',''],['','','','','','','','','']]
-	}	
+		var blank = { value: null }
+		$scope.solved = [
+		[blank,blank,blank,blank,blank,blank,blank,blank,blank],
+		[blank,blank,blank,blank,blank,blank,blank,blank,blank],
+		[blank,blank,blank,blank,blank,blank,blank,blank,blank],
+		[blank,blank,blank,blank,blank,blank,blank,blank,blank],
+		[blank,blank,blank,blank,blank,blank,blank,blank,blank],
+		[blank,blank,blank,blank,blank,blank,blank,blank,blank],
+		[blank,blank,blank,blank,blank,blank,blank,blank,blank],
+		[blank,blank,blank,blank,blank,blank,blank,blank,blank],
+		[blank,blank,blank,blank,blank,blank,blank,blank,blank]]
+	};
 
 	// solve('.94...13..............76..2.8..1.....32.........2...6.....5.4.......8..7..63.4..8');
 }
