@@ -1,37 +1,41 @@
 <h1>Kill all Sudoku</h1>
 
+<div class="row"></div>
+
 <div ng-app="sudokuApp">
 	<div ng-controller="sudokuCtrl" ng-init="clearBoard()">
+		<div class="col-md-6">
+		  <img src="bender.jpg" id="glorious-bender">
+		</div>
 
-	  <img src="bender.jpg">
+		<div class="col-md-6">
+			<h5>To solve your puzzle, either type it in the box like the example or directly onto the board.</h5>
 
-		<h5>To solve your puzzle, either type it in the box like the example or directly onto the board.</h5>
+	  	<form ng-submit="solveMe(unsolvedPuzzle)">
+				<input type="text" ng-model="unsolvedPuzzle" ng-init="unsolvedPuzzle = '39.82.7..8.15...69.2.16.4.3..2.96.58935...6.2.6.752.3.7.3941...2...3759..19...347'">
+			</form>
 
-  	<form ng-submit="solveMe(unsolvedPuzzle)">
-			<input type="text" ng-model="unsolvedPuzzle" ng-init="unsolvedPuzzle = '39.82.7..8.15...69.2.16.4.3..2.96.58935...6.2.6.752.3.7.3941...2...3759..19...347'">
-		</form>
+			<table class="sudoku_board">
+				<tr ng-repeat="row in solved track by $index" ng-init= "rowIndex = $index" >
+					<td ng-repeat ="cell in row track by $index">
+						<form>
+							<input ng-model="solved[rowIndex][$index].value" limit-to="1" type="number"/>
+						</form>
+					</td>
+				</tr>
+			</table>
 
-		<table class="sudoku_board">
-			<tr ng-repeat="row in solved track by $index" ng-init= "rowIndex = $index" >
-				<td ng-repeat ="cell in row track by $index">
-					<form>
-						<input ng-model="solved[rowIndex][$index].value" limit-to="1" type="number"/>
-					</form>
-				</td>
-			</tr>
-		</table>
+			<button ng-click="solveMe(solved)">
+				Kill it!
+			</button>
 
-		<button ng-click="solveMe(solved)">
-			Kill it!
-		</button>
+			<button ng-click="clearBoard()">
+				Clear
+			</button>
 
-		<button ng-click="clearBoard()">
-			Clear
-		</button>
-
-		<button ng-click="defaultPuzzle()">
-			default
-		</button>
-			
-	</div>
-</div>
+			<button ng-click="defaultPuzzle()">
+				default
+			</button>
+		</div> <!-- class="col-md-6" -->
+	</div> <!-- ng-controller="sudokuCtrl" -->
+</div> <!-- ng-app="sudokuApp" -->
