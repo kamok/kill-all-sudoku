@@ -16,8 +16,8 @@
 			</form>
 
 			<table class="sudoku_board">
-				<tr ng-repeat="row in solved track by $index" ng-init= "rowIndex = $index" >
-					<td ng-repeat ="cell in row track by $index">
+				<tr ng-repeat="row in solved track by $index" ng-init= "rowIndex = $index" class="border-{{$index % 3 == 0}}">
+					<td ng-repeat ="cell in row track by $index" class="border-{{$index % 3 == 0}}">
 						<form>
 							<input ng-model="solved[rowIndex][$index].value" limit-to="1" type="number"/>
 						</form>
@@ -41,7 +41,7 @@
 				</div>
 			</div>
 		</div> <!-- class="col-md-6" -->
-		
+
 	</div> <!-- ng-controller="sudokuCtrl" -->
 </div> <!-- ng-app="sudokuApp" -->
 
