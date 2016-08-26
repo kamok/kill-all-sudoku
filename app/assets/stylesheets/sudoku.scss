@@ -3,19 +3,27 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .sudoku_board {
-	tr input {
-  text-align: center;
-  background: #e6ffcc;
-  border: none;
-  cursor: pointer;
-  height: 3vw;
-  width: 3vw;
-  margin: 0.25em;
-	}
+  margin: 20px auto;
+  border: 3px solid #000;
+  tr td {
+    border: 1px solid #000;
+  }
+  tr input{
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    background: none;
+    border: none;
+    width: 40px;
+    height: 40px;
+  }
 }
 
 #glorious-bender {
+  max-width: 540px;
   width: 100%;
+  border: 3px solid #666;
+  border-radius: 25px;
 }
 
 /*get's rid of annoying spinner for input="number"*/
