@@ -12,8 +12,10 @@ class Sudoku < ActiveRecord::Base
   end
 
   def solve
+    return false if @board.has_less_than_17_clues?
+
     answer = @board.solve!
-    case answer 
+    case @board.solve!
       when false
         "This sudoku puzzle is invalid."
       else

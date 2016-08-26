@@ -6,7 +6,6 @@ function($scope, sudokuService) {
 
 	function solve(unsolvedPuzzle) {
 		sudokuService.solveSudoku(unsolvedPuzzle).then(function(solvedPuzzle){
-			console.log(solvedPuzzle);
 			var output = [];
 			var sNumber = solvedPuzzle['solution'].toString();
 

@@ -12,13 +12,8 @@ class Board
     @array_representation = data
   end
 
-  def update_array_representation
-    @array_representation = 
-    [].tap do |string|
-      cells.each do |cell|
-        string << cell.value
-      end
-    end
+  def has_less_than_17_clues?
+    @number_of_solved_cells < 17
   end
 
   def update_possible_values
@@ -28,7 +23,6 @@ class Board
   end
 
   def solve!
-    display_board
     return false unless valid?
     if solved?
       update_array_representation
@@ -47,49 +41,6 @@ class Board
     end
 
     return false
-  end
-
-  def get_next_cell
-    update_possible_values
-    cells.sort_by { |cell| cell.possible_values.count }.each { |cell| return cell if cell.value == 0 }
-  end
-
-  def solved?
-    cells.each do |cell|
-      return false if cell.value == 0
-    end
-  end
-
-  def valid?
-    no_dups?(rows) && no_dups?(columns) && no_dups?(blocks)
-  end
-
-  def no_dups?(structure)
-    structure.each do |struct|
-      return false if struct.values.uniq.length != struct.values.length
-    end
-    true
-  end
-
-  def display_board
-    cell_counter = 0
-    display_output = ""
-    @cells.each do |cell|
-      1.times do 
-        break if cell_counter == 0
-        if cell_counter % 3 == 0 && cell_counter % 9 != 0
-          display_output += "|"
-        end
-        if cell_counter % 9 == 0
-          display_output += "\n"
-        end
-        if cell_counter % 27 == 0
-          display_output += " -----+------+------\n"
-        end
-      end 
-      display_output += " #{cell.value.to_s}"
-      cell_counter += 1
-    end
   end
 
   def no_more_freebies?
@@ -172,4 +123,36 @@ class Board
       end
     end
   end
+
+  def update_array_representation
+    @array_representation = 
+    [].tap do |string|
+      cells.each do |cell|
+        string << cell.value
+      end
+    end
+  end
+
+   def get_next_cell
+    update_possible_values
+    cells.sort_by { |cell| cell.possible_values.count }.each { |cell| return cell if cell.value == 0 }
+  end
+
+  def solved?
+    cells.each do |cell|
+      return false if cell.value == 0
+    end
+  end
+
+  def valid?
+    no_dups?(rows) && no_dups?(columns) && no_dups?(blocks)
+  end
+
+  def no_dups?(structure)
+    structure.each do |struct|
+      return false if struct.values.uniq.length != struct.values.length
+    end
+    true
+  end
+
 end

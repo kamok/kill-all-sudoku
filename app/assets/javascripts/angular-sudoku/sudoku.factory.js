@@ -7,9 +7,7 @@ function ($http, $q) {
 		if (typeof unsolvedPuzzle == "object") {
 			unsolvedPuzzle = parseSudoku(unsolvedPuzzle);
 		};
-
-		console.log(unsolvedPuzzle);
-
+		
 		var deferred = $q.defer();
 		var queryString = {}
 		queryString["sudoku_string"] = unsolvedPuzzle;
