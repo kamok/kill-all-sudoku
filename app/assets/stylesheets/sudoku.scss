@@ -1,3 +1,21 @@
 // Place all the styles related to the sudoku controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.sudoku_board {
+	tr input {
+  text-align: center;
+  background: #e6ffcc;
+  border: none;
+  cursor: pointer;
+  height: 3vw;
+  width: 3vw;
+	}
+}
+
+/*get's rid of annoying spinner for input="number"*/
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
