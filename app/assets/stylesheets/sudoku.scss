@@ -2,7 +2,14 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.sudoku_board {
+#sudoku-title {
+  font-family:'Futrama-Title';
+  text-align: center;
+  font-size: 8em;
+  margin-bottom:50px;
+}
+
+.sudoku-board {
   margin: 20px auto;
   border: 3px solid #000;
   td {
@@ -30,6 +37,10 @@
   width: 100%;
   border: 3px solid #666;
   border-radius: 25px;
+  //this centers it
+  margin-left: auto;
+  margin-right: auto;
+  display:block !important;
 }
 
 /*get's rid of annoying spinner for input="number"*/

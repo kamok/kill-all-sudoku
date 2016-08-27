@@ -1,4 +1,4 @@
-# kill-all-sudoku
+# Kill All Sudoku
 
 Rails, Angular, Underscore 
 
@@ -15,3 +15,10 @@ Todo:
 2. Add Bender soundboard.
 
 3. Add cache for puzzles for that light speed efficency.
+
+4. Match the puzzle inputs with default.
+
+5. Mobile verison baby 
+	a. Set custom css for each view break point. Mainly each input fields
+
+6. Kill-All-Sudoku API

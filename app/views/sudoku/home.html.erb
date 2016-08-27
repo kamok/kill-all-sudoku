@@ -1,4 +1,4 @@
-<h1>Kill all Sudoku</h1>
+<h1 id="sudoku-title">Kill all Sudoku</h1>
 
 <div class="row"></div>
 
@@ -15,7 +15,7 @@
 				<input type="text" ng-model="unsolvedPuzzle" ng-init="unsolvedPuzzle = '39.82.7..8.15...69.2.16.4.3..2.96.58935...6.2.6.752.3.7.3941...2...3759..19...347'"  class="form-control">
 			</form>
 
-			<table class="sudoku_board">
+			<table class="sudoku-board">
 				<tr ng-repeat="row in solved track by $index" ng-init= "rowIndex = $index" class="border-{{$index % 3 == 0}}">
 					<td ng-repeat ="cell in row track by $index" class="border-{{$index % 3 == 0}}">
 						<form>
@@ -45,9 +45,4 @@
 	</div> <!-- ng-controller="sudokuCtrl" -->
 </div> <!-- ng-app="sudokuApp" -->
 
-<!-- <script>
-var cw = $('.sudoku_board tr input').width();
-$('.sudoku_board tr input').css({
-    'height': cw + 'px'
-});
-</script> -->
+<%= render "layouts/footer" %>
