@@ -17,6 +17,7 @@ function ($http, $q) {
 			})
 			.error(function(err){
 				console.log("Error retrieving data from Rails");
+				console.log(err);
 				deferred.reject(err);
 			});
 		return deferred.promise;
