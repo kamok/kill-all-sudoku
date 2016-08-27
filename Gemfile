@@ -18,8 +18,11 @@ group :development do
   gem 'web-console', '~> 2.0'
 end
 
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+group :production do 
+  gem 'rails_12factor'
+end
 
+gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'angularjs-rails'
 gem 'underscore-rails'
 gem 'bootstrap-sass', '~> 3.3.6'
