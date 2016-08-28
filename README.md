@@ -6,7 +6,7 @@ Rails, Angular, Underscore
 
 Todo:
 
-** Push to production on Heroku
+Beautify footer
 
 1. Add clever error messages: 
 	a. You've submitted a wrong sudoku puzzle.
