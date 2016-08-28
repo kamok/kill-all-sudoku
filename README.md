@@ -6,8 +6,6 @@ Rails, Angular, Underscore
 
 Todo:
 
-Beautify footer
-
 1. Add clever error messages: 
 	a. You've submitted a wrong sudoku puzzle.
 	b. Your sudoku puzzle has less than 17 clues, the minimum possible for unique solutions.
@@ -16,9 +14,7 @@ Beautify footer
 
 3. Add cache for puzzles for that light speed efficency.
 
-4. Match the puzzle inputs with default.
-
-5. Mobile verison baby 
+4. Mobile verison baby 
 	a. Set custom css for each view break point. Mainly each input fields
 
-6. Kill-All-Sudoku API
+5. Kill-All-Sudoku API
