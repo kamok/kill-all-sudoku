@@ -6,17 +6,20 @@ Rails, Angular, Underscore
 
 Todo:
 
-**Sanitize data before writing to DB
-
 1. Add clever error messages: 
 	a. You've submitted a wrong sudoku puzzle.
 	b. Your sudoku puzzle has less than 17 clues, the minimum possible for unique solutions.
 
-2. Add Bender soundboard.
+3. Small about section about what is a "hard" puzzle.
 
-4. Mobile verison baby 
+Nice to have:
+
+Mobile verison baby 
 	a. Set custom css for each view break point. Mainly each input fields
 
-5. Kill-All-Sudoku API
+Kill-All-Sudoku API
 
-6. Image upload, and recognition
+Random Bender Quote on-click (AWS or /public)
+
+Dream:
+Image upload, and recognition
