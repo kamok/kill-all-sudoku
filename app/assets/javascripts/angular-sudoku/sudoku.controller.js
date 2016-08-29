@@ -7,20 +7,23 @@ function($scope, sudokuService) {
 	function solve(unsolvedPuzzle) {
 		sudokuService.solveSudoku(unsolvedPuzzle).then(function(solvedPuzzle){
 			var output = [];
-			var sNumber = solvedPuzzle['solution'].toString();
-
-			for (var i = 0; i < sNumber.length; i += 1) {
+			if (solvedPuzzle['solution']) {
+				var sNumber = solvedPuzzle['solution'].toString();
+				for (var i = 0; i < sNumber.length; i += 1) {
 			  output.push({value: +sNumber.charAt(i)});
-			}
+				};
 
-			var nestedArray = [];
+				var nestedArray = [];
 
-			for (var i = 0; i < 9 ; i += 1) {
-				var a = output.splice(0,9);
-				nestedArray.push(a);
-			}
+				for (var i = 0; i < 9 ; i += 1) {
+					var a = output.splice(0,9);
+					nestedArray.push(a);
+				};
 
-			$scope.solved = nestedArray;
+				$scope.solved = nestedArray;
+			};
+
+			$scope.error = solvedPuzzle['error'];
 		});
 	};
 

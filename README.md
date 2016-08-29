@@ -6,6 +6,8 @@ Rails, Angular, Underscore
 
 Todo:
 
+**Sanitize data before writing to DB
+
 1. Add clever error messages: 
 	a. You've submitted a wrong sudoku puzzle.
 	b. Your sudoku puzzle has less than 17 clues, the minimum possible for unique solutions.
