@@ -12,9 +12,9 @@ Todo:
 
 2. Add Bender soundboard.
 
-3. Add cache for puzzles for that light speed efficency.
-
 4. Mobile verison baby 
 	a. Set custom css for each view break point. Mainly each input fields
 
 5. Kill-All-Sudoku API
+
+6. Image upload, and recognition
