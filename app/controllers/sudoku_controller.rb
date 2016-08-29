@@ -13,19 +13,12 @@ class SudokuController < ApplicationController
 
   private
 
-  # should move this to a helper
   def sanitize_puzzle
-    puzzle = params[:sudoku_string].split("")
-
-    puzzle.map! do |value|
-      value = 0 if value == "."
-      unless value.is_a_number?
-        render json: { error: "Your sudoku puzzle is invalid."}
-      end
-      value
+    params[:sudoku_string] = Sudoku.sanitize(params[:sudoku_string])
+    
+    if params[:sudoku_string] == false
+      render json: { error: "Your sudoku puzzle is invalid."}
     end
-
-    params[:sudoku_string] = puzzle.join
   end
-  
+
 end

@@ -28,12 +28,27 @@ class Sudoku < ActiveRecord::Base
     solution
   end
 
+  def self.sanitize(puzzle)
+    puzzle = puzzle.split("")
+
+    puzzle.map! do |value|
+      value == "." ? value = 0 : value
+    end
+    puzzle.each { |value| return false unless is_a_number?(value) }
+
+    puzzle.join
+  end
+
   private
 
   def self.parse_import(raw_data)
     raw_data.split("").map do |value|
       value == "." ? value = 0 : value.to_i
     end
+  end
+
+  def self.is_a_number?(value)
+    value.to_f.to_s == value.to_s || value.to_i.to_s == value.to_s
   end
 
 end
