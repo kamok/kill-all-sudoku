@@ -43,6 +43,17 @@
   display:block !important;
 }
 
+#error-box{
+  color: #8a6d3b;
+  background-color: #fcf8e3;
+  // padding: 5px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  text-align: center;
+  font-family:'Futrama-Title';
+}
+
 /*get's rid of annoying spinner for input="number"*/
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {

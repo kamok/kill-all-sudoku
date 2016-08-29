@@ -1,12 +1,7 @@
 module SudokuHelper
-  def copyright_notice_year_range(start_year)
-    start_year = start_year.to_i
-    current_year = Time.new.year
-
-    if current_year > start_year
-      "#{start_year} - #{current_year}"
-    else
-      "#{current_year}"
+  class Object
+    def is_a_number?
+      self.to_f.to_s == self.to_s || self.to_i.to_s == self.to_s
     end
   end
 end

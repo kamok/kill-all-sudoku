@@ -11,10 +11,21 @@ class SudokuController < ApplicationController
     render json: { solution: solution }
   end
 
+  private
+
+  # should move this to a helper
   def sanitize_puzzle
-    if params[:sudoku_string].length < 81
-      render json: { error: "Your sudoku puzzle is invalid."}
+    puzzle = params[:sudoku_string].split("")
+
+    puzzle.map! do |value|
+      value = 0 if value == "."
+      unless value.is_a_number?
+        render json: { error: "Your sudoku puzzle is invalid."}
+      end
+      value
     end
+
+    params[:sudoku_string] = puzzle.join
   end
   
 end
