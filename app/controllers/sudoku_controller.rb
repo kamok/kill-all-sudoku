@@ -5,7 +5,18 @@ class SudokuController < ApplicationController
   end
 
   def solve_puzzle
-    sudoku = Sudoku.new(params[:sudoku_string])
-    render json: { solution: sudoku.solve }
+    # response = fetch_solution || Sudoku.new(params[:sudoku_string]).solve
+    solution = Sudoku.solve(params[:sudoku_string])
+    save_solution(solution)
+    render json: { solution: solution }
   end
+
+  # def fetch_solution(puzzle)
+  #   Sudoku.all.where("puzzle = ? ", params[:sudoku_string]).solution
+  # end
+
+  def save_solution(solution)
+    Sudoku.create(puzzle: params[:sudoku_string], solution: solution )
+  end
+  
 end

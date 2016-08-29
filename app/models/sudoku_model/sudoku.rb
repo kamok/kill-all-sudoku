@@ -1,7 +1,7 @@
 class Sudoku < ActiveRecord::Base
   attr_reader :board
-  
-  def initialize(data)
+
+  def self.solve(data)
     data = parse_import(data)
     @board = Board.new(data)
     @board.set_initial_values
@@ -9,9 +9,6 @@ class Sudoku < ActiveRecord::Base
       @board.update_possible_values 
       @board.cells.each(&:solve)
     end
-  end
-
-  def solve
     return false if @board.has_less_than_17_clues?
 
     answer = @board.solve!
@@ -25,7 +22,7 @@ class Sudoku < ActiveRecord::Base
 
   private
 
-  def parse_import(raw_data)
+  def self.parse_import(raw_data)
     raw_data.split("").map do |value|
       value == "." ? value = 0 : value.to_i
     end
