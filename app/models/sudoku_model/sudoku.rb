@@ -20,6 +20,16 @@ class Sudoku < ActiveRecord::Base
       end
   end
 
+  def detect(unsolved_puzzle)
+    if solution.present?
+      solution
+    else 
+      self.solution = Sudoku.solve(unsolved_puzzle)
+      self.save
+      solution
+    end
+  end
+
   private
 
   def self.parse_import(raw_data)
