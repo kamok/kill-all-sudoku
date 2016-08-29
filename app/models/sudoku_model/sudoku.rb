@@ -21,13 +21,11 @@ class Sudoku < ActiveRecord::Base
   end
 
   def detect(unsolved_puzzle)
-    if solution.present?
-      solution
-    else 
+    if !solution.present? 
       self.solution = Sudoku.solve(unsolved_puzzle)
       self.save
-      solution
     end
+    solution
   end
 
   private
