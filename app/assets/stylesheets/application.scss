@@ -7,6 +7,16 @@
   src: font-url('fr-title.ttf')  format('truetype');
 }
 
+@font-face {
+  font-family: 'Futrama-Body';
+  src: font-url('fr-bold.ttf')  format('truetype');
+}
+
+body {
+  font-family:'Futrama-Body'
+}
+
+
 #footer {
 	text-align: center;
 	margin: 5%;

@@ -17,11 +17,12 @@
 		</div>
 
 		<div class="col-lg-6">
-
-			<h3>Input the puzzle by typing it in the text field or directly onto the board.</h3>
+			<div id="instructions">
+				<h3>Input the puzzle by typing it in the text field or directly onto the board.</h3>
+			</div>
 
 	  	<form ng-submit="solveMe(unsolvedPuzzle)">
-				<input type="text" ng-model="unsolvedPuzzle" ng-init="unsolvedPuzzle = '39.82.7..8.15...69.2.16.4.3..2.96.58935...6.2.6.752.3.7.3941...2...3759..19...347'"  class="form-control" required minlength="81">
+				<input type="text" ng-model="unsolvedPuzzle" ng-init="unsolvedPuzzle = '39.82.7..8.15...69.2.16.4.3..2.96.58935...6.2.6.752.3.7.3941...2...3759..19...347'"  class="form-control" id="string-input-box" required minlength="81">
 			</form>
 
 			<table class="sudoku-board">
