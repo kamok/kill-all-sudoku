@@ -5,9 +5,9 @@
 <div ng-app="sudokuApp">
 	<div ng-controller="sudokuCtrl" ng-init="clearBoard()">
 
-		<!-- <div id="error-box">
+		<div id="error-box" ng-if="error">
 			<h3>{{error}}</h3>
-		</div> -->
+		</div>
 
 		<div class="col-lg-6">
 			<input type="image" src="bender.jpg" id="glorious-bender"/>
@@ -18,7 +18,7 @@
 
 		<div class="col-lg-6">
 
-			<h3>To solve your puzzle, either type it in the box like the example or directly onto the board.</h3>
+			<h3>Input the puzzle by typing it in the text field or directly onto the board.</h3>
 
 	  	<form ng-submit="solveMe(unsolvedPuzzle)">
 				<input type="text" ng-model="unsolvedPuzzle" ng-init="unsolvedPuzzle = '39.82.7..8.15...69.2.16.4.3..2.96.58935...6.2.6.752.3.7.3941...2...3759..19...347'"  class="form-control" required minlength="81">
