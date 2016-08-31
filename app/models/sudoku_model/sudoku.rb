@@ -9,15 +9,8 @@ class Sudoku < ActiveRecord::Base
       @board.update_possible_values 
       @board.cells.each(&:solve)
     end
-    return false if @board.has_less_than_17_clues?
 
-    answer = @board.solve!
-    case @board.solve!
-      when false
-        "This sudoku puzzle is invalid."
-      else
-        answer.join
-      end
+    @board.solve!.join
   end
 
   def detect(unsolved_puzzle)
@@ -31,10 +24,9 @@ class Sudoku < ActiveRecord::Base
   def self.sanitize(puzzle)
     puzzle = puzzle.split("")
 
-    puzzle.map! do |value|
-      value == "." ? value = 0 : value
-    end
+    puzzle.map! { |value| value == "." ? value = 0 : value }
     puzzle.each { |value| return false unless is_a_number?(value) }
+    return false if has_more_than_one_solution?(puzzle.join)
 
     puzzle.join
   end
@@ -49,6 +41,10 @@ class Sudoku < ActiveRecord::Base
 
   def self.is_a_number?(value)
     value.to_f.to_s == value.to_s || value.to_i.to_s == value.to_s
+  end
+
+  def self.has_more_than_one_solution?(puzzle_string)
+    puzzle_string.count("1-9") <= 17 ? true : false
   end
 
 end

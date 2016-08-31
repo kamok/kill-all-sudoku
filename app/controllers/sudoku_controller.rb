@@ -1,6 +1,7 @@
 class SudokuController < ApplicationController
   skip_before_action :verify_authenticity_token, only: [:solve_puzzle]
   before_action :sanitize_puzzle, only: [:solve_puzzle]
+  
   def home
   end
 

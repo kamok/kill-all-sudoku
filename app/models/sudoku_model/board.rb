@@ -12,10 +12,6 @@ class Board
     @array_representation = data
   end
 
-  def has_less_than_17_clues?
-    @number_of_solved_cells < 17
-  end
-
   def update_possible_values
     @cells.each {|cell| cell.possible_values.clear if cell.value != 0}
 
