@@ -1,6 +1,14 @@
 class Sudoku < ActiveRecord::Base
   attr_reader :board
 
+  def detect(unsolved_puzzle)
+    if !solution.present? 
+      self.solution = Sudoku.solve(unsolved_puzzle)
+      self.save
+    end
+    solution
+  end
+
   def self.solve(data)
     @board = Board.new(data)
     @board.set_initial_values
@@ -10,14 +18,6 @@ class Sudoku < ActiveRecord::Base
     end
 
     @board.solve!.join
-  end
-
-  def detect(unsolved_puzzle)
-    if !solution.present? 
-      self.solution = Sudoku.solve(unsolved_puzzle)
-      self.save
-    end
-    solution
   end
 
   def self.sanitize(puzzle)
@@ -35,7 +35,7 @@ class Sudoku < ActiveRecord::Base
       return "more_than_one_solution"
     end
     
-    puzzle
+    puzzle.map(&:to_i)
   end
 
   private
