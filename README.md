@@ -6,9 +6,11 @@ Rails, Angular, Underscore
 
 Todo:
 
-1. Add clever error messages: 
-	a. You've submitted a wrong sudoku puzzle.
-	b. Your sudoku puzzle has less than 17 clues, the minimum possible for unique solutions.
+Refactor methods.
+
+self.sanitize
+self.solve
+
 
 3. Small about section about what is a "hard" puzzle.
 

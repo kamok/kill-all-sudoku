@@ -6,6 +6,7 @@ class Board
   BLOCK_ID = COLUMN_ID
 
   def initialize(data)
+    # data.split("").map do |value
     @cells, @rows, @columns, @blocks = [], [], [], []
     make_board
     @number_of_solved_cells = 0

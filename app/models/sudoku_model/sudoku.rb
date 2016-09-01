@@ -2,7 +2,6 @@ class Sudoku < ActiveRecord::Base
   attr_reader :board
 
   def self.solve(data)
-    data = parse_import(data)
     @board = Board.new(data)
     @board.set_initial_values
     until @board.no_more_freebies? 
@@ -35,17 +34,11 @@ class Sudoku < ActiveRecord::Base
     if has_more_than_one_solution?(puzzle.join)
       return "more_than_one_solution"
     end
-
-    puzzle.join
+    
+    puzzle
   end
 
   private
-
-  def self.parse_import(raw_data)
-    raw_data.split("").map do |value|
-      value == "." ? value = 0 : value.to_i
-    end
-  end
 
   def self.is_a_number?(value)
     value.to_f.to_s == value.to_s || value.to_i.to_s == value.to_s
