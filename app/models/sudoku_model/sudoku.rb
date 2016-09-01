@@ -12,7 +12,8 @@ class Sudoku < ActiveRecord::Base
   def self.solve(data)
     @board = Board.new(data)
     @board.set_initial_values
-    until @board.no_more_freebies? 
+    
+    until @board.has_no_more_freebies? 
       @board.update_possible_values 
       @board.cells.each(&:solve)
     end
@@ -24,17 +25,15 @@ class Sudoku < ActiveRecord::Base
     puzzle = puzzle.split("")
 
     puzzle.map! { |value| value == "." ? value = 0 : value }
-    
+
     puzzle.each do |value| 
-      unless is_a_number?(value)
-        return "has_special_characters"
-      end
+      return "has_special_characters" unless is_a_number?(value)
     end
     
     if has_more_than_one_solution?(puzzle.join)
       return "more_than_one_solution"
     end
-    
+
     puzzle.map(&:to_i)
   end
 

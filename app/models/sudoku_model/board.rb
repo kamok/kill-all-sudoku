@@ -6,7 +6,6 @@ class Board
   BLOCK_ID = COLUMN_ID
 
   def initialize(data)
-    # data.split("").map do |value
     @cells, @rows, @columns, @blocks = [], [], [], []
     make_board
     @number_of_solved_cells = 0
@@ -40,7 +39,7 @@ class Board
     return false
   end
 
-  def no_more_freebies?
+  def has_no_more_freebies?
     freebies_in_current_iteration = 0
     cells.each do |cell|
       if cell.value != 0
