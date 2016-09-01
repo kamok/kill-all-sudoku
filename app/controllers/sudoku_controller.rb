@@ -17,9 +17,14 @@ class SudokuController < ApplicationController
   def sanitize_puzzle
     params[:sudoku_string] = Sudoku.sanitize(params[:sudoku_string])
     
-    if params[:sudoku_string] == false
-      render json: { error: "Your sudoku puzzle is invalid."}
-    end
+    case params[:sudoku_string]
+      when false
+        render json:{ error: "Your sudoku puzzle is invalid."}
+      when "more_than_one_solution"
+        render json:{ error: "Your sudoku puzzle has more than one solution."}
+      when "has_special_characters"
+        render json:{ error: "Your input has weird special characters."}
+      end
   end
 
 end

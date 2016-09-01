@@ -25,8 +25,16 @@ class Sudoku < ActiveRecord::Base
     puzzle = puzzle.split("")
 
     puzzle.map! { |value| value == "." ? value = 0 : value }
-    puzzle.each { |value| return false unless is_a_number?(value) }
-    return false if has_more_than_one_solution?(puzzle.join)
+    
+    puzzle.each do |value| 
+      unless is_a_number?(value)
+        return "has_special_characters"
+      end
+    end
+    
+    if has_more_than_one_solution?(puzzle.join)
+      return "more_than_one_solution"
+    end
 
     puzzle.join
   end
