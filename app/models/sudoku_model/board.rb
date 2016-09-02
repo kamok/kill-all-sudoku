@@ -9,7 +9,7 @@ class Board
     @cells, @rows, @columns, @blocks = [], [], [], []
     make_board
     @number_of_solved_cells = 0
-    @array_representation = data
+    @array_representation = data.split("").map(&:to_i)
   end
 
   def update_possible_values
@@ -22,7 +22,7 @@ class Board
     return false unless valid?
     if solved?
       update_array_representation
-      return  @array_representation
+      return  @array_representation.join
     end
 
     next_cell = get_next_cell
@@ -30,7 +30,7 @@ class Board
     (next_cell.possible_values).each do |attempt|
       next_cell.value = attempt                  
       update_array_representation
-      a = Board.new(@array_representation)
+      a = Board.new(@array_representation.join)
       a.set_initial_values
       solution = a.solve!
       return solution if solution

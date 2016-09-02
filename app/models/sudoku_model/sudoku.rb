@@ -10,6 +10,7 @@ class Sudoku < ActiveRecord::Base
   end
 
   def self.solve(data)
+    puts "this is in sudoku.rb"
     @board = Board.new(data)
     @board.set_initial_values
     
@@ -18,14 +19,14 @@ class Sudoku < ActiveRecord::Base
       @board.cells.each(&:solve)
     end
 
-    @board.solve!.join
+    @board.solve!
   end
 
   def self.sanitize(puzzle)
     puzzle = puzzle.split("")
 
     puzzle.map! { |value| value == "." ? value = 0 : value }
-
+    
     puzzle.each do |value| 
       return "has_special_characters" unless is_a_number?(value)
     end
@@ -34,7 +35,7 @@ class Sudoku < ActiveRecord::Base
       return "more_than_one_solution"
     end
 
-    puzzle.map(&:to_i)
+    puzzle.join
   end
 
   private
