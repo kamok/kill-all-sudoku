@@ -30,8 +30,15 @@ class Board
     (next_cell.possible_values).each do |attempt|
       next_cell.value = attempt                  
       update_array_representation
+
       a = Board.new(@array_representation.join)
+
       a.set_initial_values
+      until a.has_no_more_freebies? 
+        a.update_possible_values 
+        a.cells.each(&:solve)
+      end
+
       solution = a.solve!
       return solution if solution
     end

@@ -10,7 +10,6 @@ class Sudoku < ActiveRecord::Base
   end
 
   def self.solve(data)
-    puts "this is in sudoku.rb"
     @board = Board.new(data)
     @board.set_initial_values
     
@@ -21,6 +20,8 @@ class Sudoku < ActiveRecord::Base
 
     @board.solve!
   end
+
+  # Sudoku.solve('.2...7..5.........6...95..1.7...413.......2....1.5...67...1.8...8..7.......2...49')
 
   def self.sanitize(puzzle)
     puzzle = puzzle.split("")
@@ -45,7 +46,7 @@ class Sudoku < ActiveRecord::Base
   end
 
   def self.has_more_than_one_solution?(puzzle_string)
-    puzzle_string.count("1-9") <= 17 ? true : false
+    puzzle_string.count("1-9") < 17 ? true : false
   end
 
 end

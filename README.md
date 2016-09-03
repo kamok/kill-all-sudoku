@@ -6,10 +6,7 @@ Rails, Angular, Underscore
 
 Todo:
 
-Refactor methods.
-
-self.sanitize
-self.solve
+self.sanitize needs some refactoring
 
 
 3. Small about section about what is a "hard" puzzle.
