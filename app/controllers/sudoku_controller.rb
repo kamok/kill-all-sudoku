@@ -7,8 +7,17 @@ class SudokuController < ApplicationController
 
   def solve_puzzle
     puzzle = Sudoku.find_or_create_by(puzzle: params[:sudoku_string])
+    solution = puzzle.fetch_or_solve(params[:sudoku_string])
+
+    #When Rails saves a boolean (false) into a string,it becomes "f"
+    #This method of returning error is hitting the DB a lot though...
     
-    render json: { solution: puzzle.fetch_or_solve(params[:sudoku_string]) }
+    if solution == "f"
+      puzzle.destroy
+      render json: { error: "Your sudoku puzzle is invalid."}
+    else
+      render json: { solution: solution }
+    end
   end
 
   private
@@ -17,8 +26,6 @@ class SudokuController < ApplicationController
     params[:sudoku_string] = Sudoku.sanitize(params[:sudoku_string])
     
     case params[:sudoku_string]
-      when false
-        render json:{ error: "Your sudoku puzzle is invalid."}
       when "more_than_one_solution"
         render json:{ error: "Your sudoku puzzle has more than one solution."}
       when "has_special_characters"
