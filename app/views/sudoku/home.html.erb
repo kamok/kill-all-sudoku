@@ -11,9 +11,6 @@
 
 		<div class="col-lg-6">
 			<input type="image" src="bender.jpg" id="glorious-bender"/>
-			<audio class="audio-cue">
-			  <source src="http://www.futurama-madhouse.net/sounds/game/021back.mp3">
-			</audio>
 		</div>
 
 		<div class="col-lg-6">
@@ -21,15 +18,15 @@
 				<h3>Input the puzzle by typing it in the text field or directly onto the board.</h3>
 			</div>
 
-	  	<form ng-submit="solveMe(unsolvedPuzzle)">
-				<input type="text" ng-model="unsolvedPuzzle" ng-init="unsolvedPuzzle = '39.82.7..8.15...69.2.16.4.3..2.96.58935...6.2.6.752.3.7.3941...2...3759..19...347'"  class="form-control" id="string-input-box" required minlength="81">
+	  	<form ng-submit="solveMe(boardString)">
+				<input type="text" ng-model="boardString" class="form-control" id="string-input-box" required minlength="81" placeholder='39.82.7..8.15...69.2.16.4.3..2.96.58935...6.2.6.752.3.7.3941...2...3759..19...347'>
 			</form>
 
 			<table class="sudoku-board">
-				<tr ng-repeat="row in solved track by $index" ng-init= "rowIndex = $index" class="border-{{$index % 3 == 0}}">
+				<tr ng-repeat="row in board track by $index" ng-init= "rowIndex = $index" class="border-{{$index % 3 == 0}}">
 					<td ng-repeat ="cell in row track by $index" class="border-{{$index % 3 == 0}}">
 						<form>
-							<input ng-model="solved[rowIndex][$index].value" limit-to="1" type="number"/>
+							<input ng-model="board[rowIndex][$index].value" limit-to="1" type="number"/>
 						</form>
 					</td>
 				</tr>
@@ -37,7 +34,7 @@
 
 			<div class="text-center">
 				<div class="btn-group">
-					<button class="btn btn-default" ng-click="solveMe(solved)">
+					<button class="btn btn-default" ng-click="solveMe(board)">
 						Kill it!
 					</button>
 
@@ -57,4 +54,9 @@
 
 <div class="row"></div>
 
+
 <%= render "layouts/footer" %>
+
+<audio class="audio-cue">
+  <source src="http://www.futurama-madhouse.net/sounds/game/021back.mp3">
+</audio>

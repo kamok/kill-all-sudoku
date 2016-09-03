@@ -20,7 +20,7 @@ function($scope, sudokuService) {
 					nestedArray.push(a);
 				};
 
-				$scope.solved = nestedArray;
+				$scope.board = nestedArray;
 			};
 
 			$scope.error = solvedPuzzle['error'];
@@ -32,7 +32,7 @@ function($scope, sudokuService) {
 	};
 
 	$scope.clearBoard = function() {
-		var solved = [];
+		var board = [];
 		var empty = { value: null };
 
 		_(9).times(function() {
@@ -40,14 +40,14 @@ function($scope, sudokuService) {
 			_(9).times(function() {
 				row.push(_.clone(empty))
 			});
-			solved.push(row)
+			board.push(row)
 		});
 
-		$scope.solved = solved;
+		$scope.board = board;
 	};
 
 	$scope.defaultPuzzle = function() {
-		$scope.solved = [[{"value":3},{"value":9},{"value":null},{"value":8},{"value":2},{"value":null},{"value":7},{"value":null},{"value":null}],[{"value":8},{"value":null},{"value":1},{"value":5},{"value":null},{"value":null},{"value":null},{"value":6},{"value":9}],[{"value":null},{"value":2},{"value":null},{"value":1},{"value":6},{"value":null},{"value":4},{"value":null},{"value":3}],[{"value":null},{"value":null},{"value":2},{"value":null},{"value":9},{"value":6},{"value":null},{"value":5},{"value":8}],[{"value":9},{"value":3},{"value":5},{"value":null},{"value":null},{"value":null},{"value":6},{"value":null},{"value":2}],[{"value":null},{"value":6},{"value":null},{"value":7},{"value":5},{"value":2},{"value":null},{"value":3},{"value":null}],[{"value":7},{"value":null},{"value":3},{"value":9},{"value":4},{"value":1},{"value":null},{"value":null},{"value":null}],[{"value":2},{"value":null},{"value":null},{"value":null},{"value":3},{"value":7},{"value":5},{"value":9},{"value":null}],[{"value":null},{"value":1},{"value":9},{"value":null},{"value":null},{"value":null},{"value":3},{"value":4},{"value":7}]];
+		$scope.board = [[{"value":3},{"value":9},{"value":null},{"value":8},{"value":2},{"value":null},{"value":7},{"value":null},{"value":null}],[{"value":8},{"value":null},{"value":1},{"value":5},{"value":null},{"value":null},{"value":null},{"value":6},{"value":9}],[{"value":null},{"value":2},{"value":null},{"value":1},{"value":6},{"value":null},{"value":4},{"value":null},{"value":3}],[{"value":null},{"value":null},{"value":2},{"value":null},{"value":9},{"value":6},{"value":null},{"value":5},{"value":8}],[{"value":9},{"value":3},{"value":5},{"value":null},{"value":null},{"value":null},{"value":6},{"value":null},{"value":2}],[{"value":null},{"value":6},{"value":null},{"value":7},{"value":5},{"value":2},{"value":null},{"value":3},{"value":null}],[{"value":7},{"value":null},{"value":3},{"value":9},{"value":4},{"value":1},{"value":null},{"value":null},{"value":null}],[{"value":2},{"value":null},{"value":null},{"value":null},{"value":3},{"value":7},{"value":5},{"value":9},{"value":null}],[{"value":null},{"value":1},{"value":9},{"value":null},{"value":null},{"value":null},{"value":3},{"value":4},{"value":7}]];
 	}
 	
 }
