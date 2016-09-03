@@ -6,10 +6,9 @@ class SudokuController < ApplicationController
   end
 
   def solve_puzzle
-    found = Sudoku.find_or_create_by(puzzle: params[:sudoku_string])
-    solution = found.detect(params[:sudoku_string])
-
-    render json: { solution: solution }
+    puzzle = Sudoku.find_or_create_by(puzzle: params[:sudoku_string])
+    
+    render json: { solution: puzzle.fetch_or_solve(params[:sudoku_string]) }
   end
 
   private

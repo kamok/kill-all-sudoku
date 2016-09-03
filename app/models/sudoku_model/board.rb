@@ -8,14 +8,15 @@ class Board
   def initialize(data)
     @cells, @rows, @columns, @blocks = [], [], [], []
     make_board
-    @number_of_solved_cells = 0
+    @solved_cells = 0
     @array_representation = data.split("").map(&:to_i)
   end
 
-  def update_possible_values
-    @cells.each {|cell| cell.possible_values.clear if cell.value != 0}
-
-    update_structure(@rows) && update_structure(@columns) && update_structure(@blocks)
+  def fill_in_freebies
+    until no_more_freebies? 
+      update_possible_values 
+      cells.each(&:solve)
+    end
   end
 
   def solve!
@@ -34,31 +35,13 @@ class Board
       a = Board.new(@array_representation.join)
 
       a.set_initial_values
-      until a.has_no_more_freebies? 
-        a.update_possible_values 
-        a.cells.each(&:solve)
-      end
+      a.fill_in_freebies
 
       solution = a.solve!
       return solution if solution
     end
 
     return false
-  end
-
-  def has_no_more_freebies?
-    freebies_in_current_iteration = 0
-    cells.each do |cell|
-      if cell.value != 0
-        freebies_in_current_iteration += 1
-      end
-    end
-    if freebies_in_current_iteration == @number_of_solved_cells
-      true
-    else
-      @number_of_solved_cells = freebies_in_current_iteration
-      false
-    end 
   end
 
   def set_initial_values
@@ -136,7 +119,7 @@ class Board
     end
   end
 
-   def get_next_cell
+  def get_next_cell
     update_possible_values
     cells.sort_by { |cell| cell.possible_values.count }.each { |cell| return cell if cell.value == 0 }
   end
@@ -156,6 +139,27 @@ class Board
       return false if struct.values.uniq.length != struct.values.length
     end
     true
+  end
+
+  def no_more_freebies?
+    current_solved_cells = 0
+
+    cells.each do |cell|
+      current_solved_cells += 1 if cell.value != 0
+    end
+
+    if current_solved_cells == @solved_cells
+      true
+    else
+      @solved_cells = current_solved_cells
+      false
+    end 
+  end
+
+  def update_possible_values
+    @cells.each {|cell| cell.possible_values.clear if cell.value != 0}
+
+    update_structure(@rows) && update_structure(@columns) && update_structure(@blocks)
   end
 
 end

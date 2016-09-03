@@ -1,7 +1,7 @@
 class Sudoku < ActiveRecord::Base
   attr_reader :board
 
-  def detect(unsolved_puzzle)
+  def fetch_or_solve(unsolved_puzzle)
     if !solution.present? 
       self.solution = Sudoku.solve(unsolved_puzzle)
       self.save
@@ -11,17 +11,11 @@ class Sudoku < ActiveRecord::Base
 
   def self.solve(data)
     @board = Board.new(data)
-    @board.set_initial_values
     
-    until @board.has_no_more_freebies? 
-      @board.update_possible_values 
-      @board.cells.each(&:solve)
-    end
-
+    @board.set_initial_values
+    @board.fill_in_freebies
     @board.solve!
   end
-
-  # Sudoku.solve('.2...7..5.........6...95..1.7...413.......2....1.5...67...1.8...8..7.......2...49')
 
   def self.sanitize(puzzle)
     puzzle = puzzle.split("")
