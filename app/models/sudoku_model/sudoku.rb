@@ -2,8 +2,8 @@ class Sudoku < ActiveRecord::Base
   attr_reader :board
 
   def self.fetch_or_solve(puzzle)
-    if Sudoku.find_by(puzzle: puzzle)
-      return Sudoku.find_by(puzzle: puzzle).solution
+    if solution = Sudoku.find_by(puzzle: puzzle)
+      return solution.solution
     else
       solution = Sudoku.solve(puzzle)
     end
