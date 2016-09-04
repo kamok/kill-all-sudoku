@@ -1,12 +1,18 @@
 class Sudoku < ActiveRecord::Base
   attr_reader :board
 
-  def fetch_or_solve(unsolved_puzzle)
-    if !solution.present? 
-      self.solution = Sudoku.solve(unsolved_puzzle)
-      self.save
+  def self.fetch_or_solve(puzzle)
+    if Sudoku.exists?(puzzle: puzzle)
+      return Sudoku.find_by(puzzle: puzzle).solution
+    else
+      solution = Sudoku.solve(puzzle)
     end
-    solution
+
+    if solution != false
+      Sudoku.create(puzzle: puzzle, solution: solution).save
+    end
+
+    return solution
   end
 
   def self.solve(data)

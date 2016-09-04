@@ -6,14 +6,9 @@ class SudokuController < ApplicationController
   end
 
   def solve_puzzle
-    puzzle = Sudoku.find_or_create_by(puzzle: params[:sudoku_string])
-    solution = puzzle.fetch_or_solve(params[:sudoku_string])
+    solution = Sudoku.fetch_or_solve(params[:sudoku_string])
 
-    #When Rails saves a boolean (false) into a string,it becomes "f"
-    #This method of returning error is hitting the DB a lot though...
-    
-    if solution == "f"
-      puzzle.destroy
+    if solution == false
       render json: { error: "Your sudoku puzzle is invalid."}
     else
       render json: { solution: solution }
@@ -31,6 +26,10 @@ class SudokuController < ApplicationController
       when "has_special_characters"
         render json:{ error: "Your input has weird special characters."}
       end
+  end
+
+  def save_puzzle_and_solution
+
   end
 
 end
