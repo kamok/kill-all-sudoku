@@ -28,8 +28,4 @@ class SudokuController < ApplicationController
       end
   end
 
-  def save_puzzle_and_solution
-
-  end
-
 end

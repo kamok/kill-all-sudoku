@@ -2,7 +2,7 @@ class Sudoku < ActiveRecord::Base
   attr_reader :board
 
   def self.fetch_or_solve(puzzle)
-    if Sudoku.exists?(puzzle: puzzle)
+    if Sudoku.find_by(puzzle: puzzle)
       return Sudoku.find_by(puzzle: puzzle).solution
     else
       solution = Sudoku.solve(puzzle)
@@ -16,11 +16,11 @@ class Sudoku < ActiveRecord::Base
   end
 
   def self.solve(data)
-    @board = Board.new(data)
+    board = Board.new(data)
     
-    @board.set_initial_values
-    @board.fill_in_freebies
-    @board.solve!
+    board.set_initial_values
+    board.fill_in_freebies
+    board.solve!
   end
 
   def self.sanitize(puzzle)
