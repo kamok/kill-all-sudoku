@@ -23,12 +23,6 @@ group :production do
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-
-#Front End 
 gem 'angularjs-rails'
-gem 'bootstrap-sass', '~> 3.3.6'
 gem 'underscore-rails'
-
-#Puma
-gem 'puma'
-gem "rack-timeout"
+gem 'bootstrap-sass', '~> 3.3.6'
